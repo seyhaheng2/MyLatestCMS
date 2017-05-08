@@ -1,0 +1,57 @@
+#promos.promos
+  - @slide_right_bot.each do |slide|
+    .promo.promo--small.pos-8.gallery-cell
+      = link_to slide do
+        .promo-block
+          .promo-block-image{:style => "background-image:url('#{slide.image.url(:thumbnail)}')"}
+        .promo-content.promo-content-fade
+          = link_to slide.subcategory.name, slide, class: 'badge'
+          %h3.promo-title
+            = link_to slide.title, slide
+          %p.promo-excerpt
+            discuss
+  - @slide_left_top.each do |slide|
+    .promo.promo--small.pos-1.gallery-cell
+      = link_to slide do
+        .promo-block
+          .promo-block-image{:style => "background-image:url('#{slide.image.url(:thumbnail)}')"}
+        .promo-content.promo-content-fade
+          -# = link_to slide.subcategory.name, slide, class: 'badge'
+          %h3.promo-title
+            = slide.title
+          %p.promo-excerpt
+            trekstor
+  - @slide_right_top.each do |slide|
+    .promo.promo--small.pos-4.gallery-cell
+      = link_to slide do
+        .promo-block
+          .promo-block-image{:style => "background-image:url('#{slide.image.url(:thumbnail)}')"}
+        .promo-content.promo-content-fade
+          = link_to slide.subcategory.name, slide, class: 'badge'
+          %h3.promo-title
+            = slide.title
+          %p.promo-excerpt
+            poll
+  - @slide_left_bot.each do |slide|
+    .promo.promo--small.pos-5.gallery-cell
+      = link_to slide do
+        .promo-block
+          .promo-block-image{:style => "background-image:url('#{slide.image.url(:thumbnail)}')"}
+        .promo-content.promo-content-fade
+          %h3.promo-title
+            = slide.title
+          %p.promo-excerpt
+            7 days
+  .promo.promo--medium.pos-2.slider
+    .main-carousel{"data-initialindex" => "1"}
+      - @slides.each do |slide|
+        .carousel-cell
+          = link_to slide do
+            = image_tag slide.image.url(:medium)
+            .promo-content.promo-content-fade
+              %span.badge
+                = slide.subcategory.name
+              %h3.promo-title
+                = slide.title
+              %p.promo-excerpt
+                hp spectre x360

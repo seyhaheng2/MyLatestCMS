@@ -1,0 +1,75 @@
+%header.site-header{:role => "banner"}
+  .wrap
+    %h1.site-logo
+      = link_to 'NeoWin',root_path
+    %span#toggle-nav.toggle-site-nav
+      %span
+    %nav#nav.site-nav{:role => "navigation"}
+      .nav-user.guest
+        = link_to "Login", new_admin_user_session_path, class: 'nav-user-register-button'
+      .nav-search
+        %form#search.search-wrapper{:action => "https://www.neowin.net/search", :method => "get"}
+          %input.search-input{:name => "terms", :placeholder => "Search News...", :tabindex => "1", :type => "search"}/
+      %ul.nav-menu.menu
+        - @categories.each do |cate|
+          %li.nav-item-news.mega-parent{"aria-haspopup" => "true"}
+            = link_to cate.name, '#'
+            .mega-menu
+              .wrap
+                %ul.mega-menu-categories
+                  - cate.subcategories.limit(5).order("created_at desc").each_with_index do |sub, x|
+                    %li{"data-category" => "#{sub.name}", class: "#{'active' if x.zero?}"}
+                      = link_to sub.name, sub
+
+                %ul.mega-menu-categories-items
+                  - cate.subcategories.limit(4).order("created_at desc").each_with_index do |sub, i|
+                    %li{id: "#{sub.name}", class: "#{'active' if i.zero?}"}
+                      .mega-menu-items
+                        - sub.posts.limit(4).each_with_index do |post|
+                          %article.mega-menu-item
+                            %figure.mega-menu-item-thumb
+                              = link_to post, class: 'mega-menu-item-thumb-link' do
+                                %img.lazyLoad{:alt => "", "data-original" => "#{post.image}"}
+                                %noscript
+                                  %img{:alt => "1493092653_screen_shot_2017-04-24_at_8.56.56_pm", :src => "https://s3.amazonaws.com/neowin/news/images/uploaded/2017/04/1493092653_screen_shot_2017-04-24_at_8.56.56_pm_medium.jpg"}/
+                                  = image_tag post.image
+                            .mega-menu-item-header
+                              %h3.mega-menu-item-title
+                                = link_to post.title, post
+                              %p.mega-menu-item-meta
+                                %time.date.published{:datetime => "2017-04-25T04:52:01+00:00"} 5 hours ago
+
+                  .view-all
+                    %a{:href => "#"} View all recent news
+
+
+
+        %li.nav-item-more{"aria-haspopup" => "true"}
+          %a.toggle{"data-toggle" => "more-nav", :href => "#{}"} More
+          %ul#more-nav.menu{:role => "menu"}
+            - @more_categories.subcategories.each do |more|
+              %li
+                = link_to more.name, more
+
+      .nav-social-alt{"aria-haspopup" => "true"}
+        %span.nav-social-alt-toggle
+          %a{:href => "#"}
+            %i.icon.facebook
+          %a{:href => "#"}
+            %i.icon.twitter
+          %a{:href => "#"}
+            %i.icon.googleplus
+        .nav-social-alt-menu
+          %dl.social
+            %dt.facebook
+              %a{:href => "#"} Facebook
+            %dd
+              .fb-like{"data-action" => "like", "data-href" => "https://www.facebook.com/neowin", "data-layout" => "button_count", "data-share" => "false", "data-show-faces" => "true"}
+            %dt.twitter
+              %a{:href => "#"} Twitter
+            %dd
+              %a.twitter-follow-button{"data-show-count" => "false", :href => "https://twitter.com/neowinfeed"} Follow @neowinfeed
+            %dt.googleplus
+              %a{:href => "#"} Google+
+            %dd
+              .g-follow{"data-annotation" => "bubble", "data-height" => "20", "data-href" => "https://plus.google.com/103621864990923776909", "data-rel" => "publisher"}

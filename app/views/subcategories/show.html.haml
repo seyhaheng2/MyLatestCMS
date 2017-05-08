@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @subcategory.name
+%p
+  %b Position:
+  = @subcategory.position
+%p
+  %b Category:
+  = @subcategory.category
+
+= link_to 'Edit', edit_subcategory_path(@subcategory)
+\|
+= link_to 'Back', subcategories_path

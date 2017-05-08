@@ -1,0 +1,47 @@
+%article#article-170216.news-item
+  .news-item-promo
+    %figure.news-item-thumb
+      = link_to post, class: 'news-item-thumb-link' do
+        = image_tag post.image, class:'lazyLoad'
+        %noscript
+          %img{:alt => "1492795799_codww2", :src => ""}/
+          = image_tag post.image
+    %header.news-item-header
+      %h3.news-item-title
+        = link_to post.title, post
+      %p.news-item-meta
+        %span.author.vcard
+          = link_to post.user.username, '#', class:'fn profile-link'
+          ·
+        %time.date.published{:datetime => "2017-04-22T11:32:01+00:00"}
+          - if post.created_at > Time.now.beginning_of_day
+            = "#{time_ago_in_words(post.created_at)} ago"
+          - else
+            = post.created_at.strftime("%b %d, %Y")
+        ·
+        %span.hot
+          = post.subcategory.name
+        %span.comments
+          %span with
+          %a.comment-link{:href => "news/call-of-duty-wwii-release-date-screenshots-and-more-details-may-have-leaked.html#comments", :title => "View 9 Comments"}
+            9
+            %span comments
+  .news-item-content
+    %p
+      - if post.summary.present?
+        = truncate( raw( sanitize(post.summary, :tags => %w(table tr td), :attributes => %w(id class style) ) ), :length => 150, :omission => "...")
+      - else
+        = truncate( raw( sanitize(post.content, :tags => %w(table tr td), :attributes => %w(id class style) ) ), :length => 140, :omission => "...")
+
+  %p.news-item-meta-mobile
+    %span.author.vcard
+      %a.fn.profile-link{:href => "profile/605008-pulasthi_ariyasinghe.html", :rel => "author"} Pulasthi Ariyasinghe
+      ·
+    %time.date.published{:datetime => "2017-04-22T11:32:01+00:00"} Apr 22, 2017
+    ·
+    %span.hot Hot!
+    %span.comments
+      %span with
+      %a.comment-link{:href => "news/call-of-duty-wwii-release-date-screenshots-and-more-details-may-have-leaked.html#comments", :title => "View 9 Comments"}
+        9
+        %span comments

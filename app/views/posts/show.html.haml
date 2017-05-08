@@ -1,0 +1,39 @@
+%section#news.news
+  .wrap
+    .row
+      .news-col.d-col-8.w-col-8
+        %p#notice= notice
+        %header.article-header
+          %h1.article-title
+            = @post.title
+          %p.article-meta
+            %span.author.vcard
+              By
+              %a.fn.profile-link{:href => "", :rel => "author"}
+                = @post.user.username
+              %span.role
+              %span.org Neowin LLC
+              ·
+            %time.date.published
+              - if @post.created_at > Time.now.beginning_of_day
+                = "#{time_ago_in_words(@post.created_at)} ago"
+              - else
+                = @post.created_at.strftime("%b %d, %Y")
+            ·
+            %span.hot
+              = @post.subcategory.name
+            %span.meta-comments
+              %span with
+              %a.comment-link.scrollto{:href => "#comments", :title => "View 7 Comments"}
+                7
+                %span comments
+        .article-content
+          %p
+            = image_tag @post.image, class: 'img-responsive'
+          %p
+            = @post.content
+        .article-tags
+          %h4.is-hidden Tags
+          %ul
+            %li
+              = raw @post.tag_list.map { |t| link_to t, tag_path(t),class: "nuans-neo-reloaded" }.join(', ') 
