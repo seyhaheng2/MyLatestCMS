@@ -1,0 +1,29 @@
+%section#news.news.article-content
+  .wrap
+    .row
+      .news-cold-col-16.w-col-16
+        %header.page-header
+
+          %h1.page-title Contact Neowin
+        .page-content
+          = form_for @contact do |f|
+            %h3
+              All other requests
+            %p
+              If you have any question, please use the contact form below to contact us.
+            %hr
+            .field
+              = f.label :name, 'Your name:'
+              = f.text_field :name, class: 'input', required: true
+            .field
+              %label{:for => "userName"}
+              = f.label :email, 'Your e-mail address:'
+              = f.email_field :email, class: 'input', required: true
+            .field
+              = f.label :message, 'Message:'
+              = f.text_area :message, class: 'textarea', rows: 6, as: :text
+            .field.hidden
+              = f.label :nickname, 'Nickname:'
+              = f.text_field :nickname, class: 'input', hint: 'leave this field blank'
+            .control
+              = f.submit "Send Message", class: 'button button-primary'

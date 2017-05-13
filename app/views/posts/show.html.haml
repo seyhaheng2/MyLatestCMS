@@ -11,8 +11,6 @@
               By
               %a.fn.profile-link{:href => "", :rel => "author"}
                 = @post.user.username
-              %span.role
-              %span.org Neowin LLC
               ·
             %time.date.published
               - if @post.created_at > Time.now.beginning_of_day
@@ -24,16 +22,16 @@
               = @post.subcategory.name
             %span.meta-comments
               %span with
-              %a.comment-link.scrollto{:href => "#comments", :title => "View 7 Comments"}
-                7
-                %span comments
+              %span.comment-link.scrollto
+                = image_tag 'view.png',size:'16x16'
+                = @post.impressionist_count
         .article-content
           %p
-            = image_tag @post.image, class: 'img-responsive'
+            = image_tag @post.image, class: 'img-up'
           %p
-            = @post.content
+            = @post.content.html_safe
         .article-tags
           %h4.is-hidden Tags
           %ul
             %li
-              = raw @post.tag_list.map { |t| link_to t, tag_path(t),class: "nuans-neo-reloaded" }.join(', ') 
+              = raw @post.tag_list.map { |t| link_to t, tag_path(t),class: "nuans-neo-reloaded" }.join(' ')

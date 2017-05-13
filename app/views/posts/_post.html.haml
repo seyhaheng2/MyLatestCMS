@@ -2,10 +2,10 @@
   .news-item-promo
     %figure.news-item-thumb
       = link_to post, class: 'news-item-thumb-link' do
-        = image_tag post.image, class:'lazyLoad'
-        %noscript
-          %img{:alt => "1492795799_codww2", :src => ""}/
-          = image_tag post.image
+        = image_tag post.image
+        -# %noscript
+        -#   %img{:alt => "1492795799_codww2", :src => ""}/
+        -#   = image_tag post.image
     %header.news-item-header
       %h3.news-item-title
         = link_to post.title, post
@@ -13,18 +13,19 @@
         %span.author.vcard
           = link_to post.user.username, '#', class:'fn profile-link'
           ·
-        %time.date.published{:datetime => "2017-04-22T11:32:01+00:00"}
+        %time.date.published
           - if post.created_at > Time.now.beginning_of_day
             = "#{time_ago_in_words(post.created_at)} ago"
           - else
             = post.created_at.strftime("%b %d, %Y")
         ·
         %span.hot
-          = post.subcategory.name
+          = link_to post.subcategory.name, subcategory_path(id: post.subcategory.id)
         %span.comments
           %span with
-          %a.comment-link{:href => "news/call-of-duty-wwii-release-date-screenshots-and-more-details-may-have-leaked.html#comments", :title => "View 9 Comments"}
-            9
+          %a.comment-link
+            = image_tag 'view.png',size:'12x12'
+            = post.impressionist_count
             %span comments
   .news-item-content
     %p

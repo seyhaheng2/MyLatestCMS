@@ -1,6 +1,6 @@
 ActiveAdmin.register Post do
 
-  permit_params :title, :image, :content, :user_id, :subcategory_id, :published_at, :format, :source, :url_source, :via, :url_via
+  permit_params :title, :image, :content, :user_id, :subcategory_id, :published_at, :format, :source, :url_source, :via, :url_via, :tag_list
 
   filter :title, as: :string
   # filter :format_post, :as => :select
@@ -37,7 +37,8 @@ ActiveAdmin.register Post do
       input :subcategory
       f.input :format, as: :select, :collection => [["Post"],["Slide"],["Trending"],["slide_left_top"],["slide_left_bot"],["slide_right_top"],["slide_right_bot"]]
       input :tag_list
-      # input :source
+      input :summary
+      input :keywords
       # input :url_source
       # input :via
       # input :url_via

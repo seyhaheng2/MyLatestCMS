@@ -1,0 +1,171 @@
+#sidebar.sidebar-col.d-col-4.w-col-4
+  -# #global_below_community_activity.ad
+  -#   #global_above_community_activity.widget.widget-ad.widget-ad-sidebar-top
+  -#     .widget-header
+  -#       %h3.widget-title Advertisement
+  -#     .widget-content
+  -#
+  .widget.widget-trending
+    .widget-header
+      %h3.widget-title Trending Stories
+    .widget-content
+      -@trendings.each do |trend|
+        %article.trending-item
+          %figure.trending-item-thumb
+            -# %a.trending-item-thumb-link{:href => "", :rel => "bookmark"}
+            = link_to trend, class: 'trending-item-thumb-link' do
+              %img.lazyLoad{:alt => "", "data-original" => "#{trend.image.url(:small)}"}
+              %noscript
+                %img{:alt => "", :src => "#{trend.image.url(:small)}"}
+          %header.trending-item-header
+            %h3.trending-item-title
+              = link_to trend.title, trend
+            %p.trending-item-meta
+              %time.date.published
+                - if trend.created_at > Time.now.beginning_of_day
+                  = "#{time_ago_in_words(trend.created_at)} ago"
+                - else
+                  = trend.created_at.strftime("%b %d, %Y")
+              %span.comments
+                %span with
+                %a.comment-link{:href => "", :title => "View 20 Comments"}
+                  20
+                  %span comments
+
+  -# .widget.widget-software
+  -#   .widget-header
+  -#     %h3.widget-title
+  -#       %a{:href => "news/cat/software.html"} Software Stories
+  -#   .widget-content
+  -#     %article.trending-item
+  -#       %figure.trending-item-thumb
+  -#         %a.trending-item-thumb-link{:href => "news/gom-audio-2280.html", :rel => "bookmark"}
+  -#           %img.lazyLoad{:alt => "gomaudio", "data-original" => "https://s3.amazonaws.com/neowin/news/images/uploaded/2016/06/gomaudio_small.jpg"}/
+  -#           %noscript
+  -#             %img{:alt => "gomaudio", :src => "https://s3.amazonaws.com/neowin/news/images/uploaded/2016/06/gomaudio_small.jpg"}/
+  -#       %header.trending-item-header
+  -#         %h3.trending-item-title
+  -#           %a{:href => "news/gom-audio-2280.html", :rel => "bookmark"} GOM Audio 2.2.8.0
+  -#         %p.trending-item-meta
+  -#           %time.date.published{:datetime => "2017-04-25T09:46:01+00:00"} 42 minutes ago
+  -#           %span.comments
+  -#             %span with
+  -#             %a.comment-link{:href => "news/gom-audio-2280.html#comments", :title => "View 0 Comments"}
+  -#               0
+  -#               %span comments
+  -#     %article.trending-item
+  -#       %figure.trending-item-thumb
+  -#         %a.trending-item-thumb-link{:href => "news/experienceindexok-121.html", :rel => "bookmark"}
+  -#           %img.lazyLoad{:alt => "experienceindexok", "data-original" => "https://s3.amazonaws.com/neowin/news/images/uploaded/2016/01/experienceindexok_small.jpg"}/
+  -#           %noscript
+  -#             %img{:alt => "experienceindexok", :src => "https://s3.amazonaws.com/neowin/news/images/uploaded/2016/01/experienceindexok_small.jpg"}/
+  -#       %header.trending-item-header
+  -#         %h3.trending-item-title
+  -#           %a{:href => "news/experienceindexok-121.html", :rel => "bookmark"} ExperienceIndexOK 1.21
+  -#         %p.trending-item-meta
+  -#           %time.date.published{:datetime => "2017-04-24T17:06:01+00:00"} 17 hours ago
+  -#           %span.comments
+  -#             %span with
+  -#             %a.comment-link{:href => "news/experienceindexok-121.html#comments", :title => "View 3 Comments"}
+  -#               3
+  -#               %span comments
+  -#     %article.trending-item
+  -#       %figure.trending-item-thumb
+  -#         %a.trending-item-thumb-link{:href => "news/marble-22.html", :rel => "bookmark"}
+  -#           %img.lazyLoad{:alt => "marble", "data-original" => "https://s3.amazonaws.com/neowin/news/images/uploaded/2014/09/marble_small.jpg"}/
+  -#           %noscript
+  -#             %img{:alt => "marble", :src => "https://s3.amazonaws.com/neowin/news/images/uploaded/2014/09/marble_small.jpg"}/
+  -#       %header.trending-item-header
+  -#         %h3.trending-item-title
+  -#           %a{:href => "news/marble-22.html", :rel => "bookmark"} Marble 2.2
+  -#         %p.trending-item-meta
+  -#           %time.date.published{:datetime => "2017-04-24T16:58:01+00:00"} 17 hours ago
+  -#           %span.comments
+  -#             %span with
+  -#             %a.comment-link{:href => "news/marble-22.html#comments", :title => "View 1 Comment"}
+  -#               1
+  -#               %span comment
+  -#     %article.trending-item
+  -#       %figure.trending-item-thumb
+  -#         %a.trending-item-thumb-link{:href => "news/bandizip-605.html", :rel => "bookmark"}
+  -#           %img.lazyLoad{:alt => "1471032574_bandizip6", "data-original" => "https://s3.amazonaws.com/neowin/news/images/uploaded/2016/08/1471032574_bandizip6_small.jpg"}/
+  -#           %noscript
+  -#             %img{:alt => "1471032574_bandizip6", :src => "https://s3.amazonaws.com/neowin/news/images/uploaded/2016/08/1471032574_bandizip6_small.jpg"}/
+  -#       %header.trending-item-header
+  -#         %h3.trending-item-title
+  -#           %a{:href => "news/bandizip-605.html", :rel => "bookmark"} Bandizip 6.05
+  -#         %p.trending-item-meta
+  -#           %time.date.published{:datetime => "2017-04-24T14:14:01+00:00"} 20 hours ago
+  -#           %span.comments
+  -#             %span with
+  -#             %a.comment-link{:href => "news/bandizip-605.html#comments", :title => "View 0 Comments"}
+  -#               0
+  -#               %span comments
+  -# #main_sidebar_bottom.widget.widget-ad.widget-ad-sidebar-footer
+  -#   .widget-header
+  -#     %h3.widget-title Advertisement
+  -#   .widget-content
+  -#     %div{"data-ns" => "halfpage", :style => "padding-bottom: 10px;"}
+  -# .widget.widget-community
+  -#   .widget-header
+  -#     %h3.widget-title
+  -#       %a{:href => "news/tags/sponsored.html"} Deals
+  -#   .widget-content
+  -#     %aside.deals.deal-sidebar
+  -#       .wrap
+  -#         .row
+  -#           %article.deal-item.deal.deal-sidebar
+  -#             %figure.deal-item-thumb
+  -#               %a.deal-item-thumb-link{:href => "http://deals.neowin.net/sales/vpn-unlimited-lifetime-subscription/?utm_source=neowin.net&utm_medium=dealfeed-rightrailr&utm_campaign=/sales/vpn-unlimited-lifetime-subscription", :rel => "bookmark"}
+  -#                 %img{:alt => "", :src => "https://cdnp3.stackassets.com/53e2715477580302fd1a640b33b7825d6b3dab37/store/opt/360/270/46a4894af6c614c98a5e19d86a8c56b4752baf15f8c3f54259e0884c6579/vpnupdate2.jpg"}/
+  -#             %header.deal-item-header
+  -#               %h3.deal-item-title
+  -#                 %a{:href => "http://deals.neowin.net/sales/vpn-unlimited-lifetime-subscription/?utm_source=neowin.net&utm_medium=dealfeed-rightrail&utm_campaign=/sales/vpn-unlimited-lifetime-subscription", :rel => "bookmark"} VPN Unlimited: Lifetime Subscription
+  -#             .deal-price
+  -#               %span.deal-price-old $499.99
+  -#               %span.deal-price-new $39.00
+  -#               %span.deal-price-off 92% off
+  -#           %article.deal-item.deal.deal-sidebar
+  -#             %figure.deal-item-thumb
+  -#               %a.deal-item-thumb-link{:href => "http://deals.neowin.net/sales/tigervpn-lifetime-subscription-3/?utm_source=neowin.net&utm_medium=dealfeed-rightrailr&utm_campaign=/sales/tigervpn-lifetime-subscription-3", :rel => "bookmark"}
+  -#                 %img{:alt => "", :src => "https://cdnp1.stackassets.com/837a7350092d80276a762108386c685b2e9884bf/store/opt/360/270/1699e4c99deca4bcef3f838e67a3d5dd26e183389dd2c1480f34d5685be3/sale_7219_primary_image.jpg"}/
+  -#             %header.deal-item-header
+  -#               %h3.deal-item-title
+  -#                 %a{:href => "http://deals.neowin.net/sales/tigervpn-lifetime-subscription-3/?utm_source=neowin.net&utm_medium=dealfeed-rightrail&utm_campaign=/sales/tigervpn-lifetime-subscription-3", :rel => "bookmark"} TigerVPN: Lifetime Subscription
+  -#             .deal-price
+  -#               %span.deal-price-old $780.00
+  -#               %span.deal-price-new $29.00
+  -#               %span.deal-price-off 96% off
+  -#           %article.deal-item.deal.deal-sidebar
+  -#             %figure.deal-item-thumb
+  -#               %a.deal-item-thumb-link{:href => "http://deals.neowin.net/sales/strong-foundations-for-computer-science-bundle/?utm_source=neowin.net&utm_medium=dealfeed-rightrailr&utm_campaign=/sales/strong-foundations-for-computer-science-bundle", :rel => "bookmark"}
+  -#                 %img{:alt => "", :src => "https://cdnp3.stackassets.com/fd8b8005ca3ca68f70b712a4f4e0a4652fe79609/store/opt/360/270/60b45128a130831540598d7f83f8526eef04146da52680be1334ed551a2f/sale_3707_image.jpg"}/
+  -#             %header.deal-item-header
+  -#               %h3.deal-item-title
+  -#                 %a{:href => "http://deals.neowin.net/sales/strong-foundations-for-computer-science-bundle/?utm_source=neowin.net&utm_medium=dealfeed-rightrail&utm_campaign=/sales/strong-foundations-for-computer-science-bundle", :rel => "bookmark"} The Complete Computer Science Bundle
+  -#             .deal-price
+  -#               %span.deal-price-old $367.00
+  -#               %span.deal-price-new $39.00
+  -#               %span.deal-price-off 89% off
+  -#           %article.deal-item.deal.deal-sidebar
+  -#             %figure.deal-item-thumb
+  -#               %a.deal-item-thumb-link{:href => "http://deals.neowin.net/sales/glasswire-pro-lifetime-license/?utm_source=neowin.net&utm_medium=dealfeed-rightrailr&utm_campaign=/sales/glasswire-pro-lifetime-license", :rel => "bookmark"}
+  -#                 %img{:alt => "", :src => "https://cdnp0.stackassets.com/1650ea5e3c58ac801e9c041b0df5a018a803646b/store/opt/360/270/3d651ea689c54cbb40b957b6524d6326dec90e80f9d01ce9a6abca71a371/product_13728_product_shots1_image.jpg"}/
+  -#             %header.deal-item-header
+  -#               %h3.deal-item-title
+  -#                 %a{:href => "http://deals.neowin.net/sales/glasswire-pro-lifetime-license/?utm_source=neowin.net&utm_medium=dealfeed-rightrail&utm_campaign=/sales/glasswire-pro-lifetime-license", :rel => "bookmark"} GlassWire Pro: Lifetime License
+  -#             .deal-price
+  -#               %span.deal-price-old $99.00
+  -#               %span.deal-price-new $29.00
+  -#               %span.deal-price-off 71% off
+  -#           %article.deal-item.deal.deal-sidebar
+  -#             %figure.deal-item-thumb
+  -#               %a.deal-item-thumb-link{:href => "http://deals.neowin.net/sales/lifetime-hosting-lite-plan-lifetime-domain/?utm_source=neowin.net&utm_medium=dealfeed-rightrailr&utm_campaign=/sales/lifetime-hosting-lite-plan-lifetime-domain", :rel => "bookmark"}
+  -#                 %img{:alt => "", :src => "https://cdnp0.stackassets.com/a09d1218be764bf5a28eb639d7d9b994e866e590/store/opt/360/270/7feacd16897e4fb6e808cba0109dc14a6f2ce8430182f69ed4c0f1929e0b/sale_5996_primary_image.jpg"}/
+  -#             %header.deal-item-header
+  -#               %h3.deal-item-title
+  -#                 %a{:href => "http://deals.neowin.net/sales/lifetime-hosting-lite-plan-lifetime-domain/?utm_source=neowin.net&utm_medium=dealfeed-rightrail&utm_campaign=/sales/lifetime-hosting-lite-plan-lifetime-domain", :rel => "bookmark"} Lifetime.Hosting Lite Plan &amp; Lifetime Domain
+  -#             .deal-price
+  -#               %span.deal-price-old $79.90
+  -#               %span.deal-price-new $19.99
+  -#               %span.deal-price-off 75% off

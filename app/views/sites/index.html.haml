@@ -1,0 +1,35 @@
+%h1 Listing sites
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Facebook
+      %th Twitter
+      %th Google
+      %th Ads1
+      %th Ads2
+      %th Ads3
+      %th Ads4
+      %th
+      %th
+      %th
+
+  %tbody
+    - @sites.each do |site|
+      %tr
+        %td= site.name
+        %td= site.facebook
+        %td= site.twitter
+        %td= site.google
+        %td= site.ads1
+        %td= site.ads2
+        %td= site.ads3
+        %td= site.ads4
+        %td= link_to 'Show', site
+        %td= link_to 'Edit', edit_site_path(site)
+        %td= link_to 'Destroy', site, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Site', new_site_path

@@ -10,6 +10,7 @@ class SubcategoriesController < ApplicationController
   # GET /subcategories/1
   # GET /subcategories/1.json
   def show
+    @subcategories = Subcategory.all
   end
 
   # GET /subcategories/new
@@ -64,7 +65,7 @@ class SubcategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subcategory
-      @subcategory = Subcategory.find(params[:id])
+      @subcategory = Subcategory.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

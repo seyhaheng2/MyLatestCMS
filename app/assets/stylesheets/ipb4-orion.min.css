@@ -1,5 +1,21 @@
-
-
+.hidden{
+	display: none;
+}
+.category-bar-filters li a{
+	text-transform: capitalize;
+}
+span.hot{
+	a{
+		text-transform: capitalize;
+	}
+p span.hot{
+	a{
+		text-transform: capitalize;
+	}
+}
+.pagination{
+	display: none;
+}
 .clear {clear: both}
 
 .img-responsive {

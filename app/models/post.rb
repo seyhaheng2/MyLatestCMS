@@ -2,9 +2,19 @@ class Post < ApplicationRecord
   belongs_to :subcategory
   belongs_to :user
 
+  is_impressionable
   acts_as_taggable
+  include PgSearch
+	pg_search_scope :search, against: [:name, :description],
+				  using: {tsearch: {dictionary: "english"}}
 
-  has_attached_file :image, :styles => { :medium => "620x349!", :thumbnail => "385x216!" },
+  def self.text_search(query)
+  	if query.present?
+  		search(query)
+  	end
+  end
+
+  has_attached_file :image, :styles => { :medium => "620x349!", :thumbnail => "385x216!", :small => "112x63!" },
                     :url  => "/assets/images/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/images/:id/:style/:basename.:extension"
 
@@ -42,6 +52,11 @@ class Post < ApplicationRecord
  scope :of_slide_right_bottom, lambda{
    where("format = 'slide_right_bot'")
  }
+
+ scope :in_sub, lambda{ |sub_id|
+  where("subcategory_id = ?", sub_id)
+ }
+
 
  def previous
    @post = Post.where(["id < ?", id]).order(:id).last

@@ -11,12 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require ckeditor/init
 //= require magnific-popup
 //= require fitvids.js
 //= require scripts.min303a
+//= require posts
 
 
 $(document).ready(function(){
