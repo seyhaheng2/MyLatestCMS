@@ -1,0 +1,44 @@
+<% @sites.each do |site| %>
+  <section class="news article-content" id="news">
+    <div class="wrap">
+      <div class="row">
+        <div class="news-cold-col-16 w-col-16">
+          <div class="news-list" id="news-content">
+            <h2>COPYRIGHT ACT POLICY,&nbsp;NOTICE AND TAKEDOWN PROCEDURE</h2>
+            <h3>Copyright Infringement Notification</h3>
+            <p>
+              <%= site.name  %> , LLC (sometimes hereinafter referred to as “we” or “our”) abides by the federal Digital Millennium Copyright Act (“DMCA”)
+            </p>
+            <p>If you believe that content available on or through this Website infringes one or more of your copyrights, please send our Copyright Agent by mail, email or fax a notification (“Notification”) providing the information described below. &nbsp;A copy of your Notification will be sent to the person who posted the material addressed in the Notification.</p>
+            <p>Pursuant to Section 512(f) of the DMCA, you may be held liable to the alleged infringer and/or <%= site.name  %>  for damages and attorneys’ fees if you make any material misrepresentations in a Notification.&nbsp; Thus, if you are not sure whether material located on or accessible via a link from the Website infringes your copyright, you should first consider contacting an attorney.</p>
+            <p>All Notifications should include the following:</p>
+            <ul>
+              <li>Identification of the copyrighted work claimed to have been infringed, or, if multiple copyrighted works at a single online site are covered by a single Notification, a representative list of such works at that site.</li>
+              <li>Identification of the content or material that is claimed to be infringing or to be the subject of infringing activity and that is to be removed or access to which is to be disabled or blocked, and information reasonably sufficient to permit the service provider to locate the content or material (providing a URL is the best way to help us locate the material quickly).</li>
+              <li>Information reasonably sufficient to permit us to contact you, including an address, telephone number, and email address at which you may be contacted.</li>
+              <li>A statement that you have a good faith belief that use of the content or material in the manner complained of is not authorized by the copyright owner, its agent, or the law.</li>
+              <li>A statement, under penalty of perjury, that the information in the Notification is accurate and that you are the copyright owner or are authorized to act on behalf of the copyright owner.</li>
+              <li>If you are not the copyright owner, a description of your relationship to the copyright owner.</li>
+              <li>A physical or electronic signature of a person authorized to act on behalf of the copyright owner.</li>
+            </ul>
+            <h3><%= site.name  %> ’s Response to Notifications</h3>
+            <p>Following receipt of a proper written Notification, we will expeditiously remove or block the allegedly infringing content or material.&nbsp; We will also notify the person who submitted or posted the allegedly infringing content or material and provide them with a copy of the copyright infringement Notification.&nbsp;</p>
+            <h3>Counter Notification</h3>
+            <p>If you believe that material that you posted to the Website has been wrongfully removed in response to a Copyright Infringement Notification submitted by a copyright owner pursuant to the Digital Millennium Copyright Act, you may send us a Counter Notification (“Counter Notification”) asking that the material be restored (if you are eligible to have the material restored, as outlined below). &nbsp;Pursuant to federal law you may be held liable for damages and attorneys’ fees if you make any material misrepresentations in a Counter Notification. &nbsp;Please note that we are required to send a copy of your Counter Notification to the person who submitted the original Copyright Infringement Notification and that in response to a Counter Notification that person may file a lawsuit against you seeking a determination of its rights with respect to the material.</p>
+            <p>To be effective, your Counter Notification must be a written communication provided to our designated agent that includes substantially the following information:</p>
+            <ul>
+              <li>Your contact information, including your name, address, telephone number, and email address.</li>
+              <li>Identification of the material that has been removed or to which access has been blocked and the location at which the material appeared before it was removed or access to it was blocked.</li>
+              <li>A statement under penalty of perjury that you have a good faith belief that the material was removed or disabled as a result of mistake or misidentification of the material to be removed or disabled.</li>
+              <li>A statement that you consent to the personal jurisdiction of Federal District Court for the judicial district where you live (or, if you are located outside of the United States, that you consent to the jurisdiction of the Federal District Court for the Eastern District of Michigan) and that you will accept service of process from the person who submitted the Notification (or an agent for that person).</li>
+              <li>Your physical or electronic signature.</li>
+            </ul>
+
+            <p>Please note that under Section 512(f) of the DMCA, any person who knowingly misrepresents that material or activity was removed or disabled by mistake or misidentification may be subject to liability.</p>
+            <p><%= site.name  %>  will only accept Counter Notifications that meet the requirements set forth above and are properly submitted to our Copyright Agent.&nbsp; Upon receipt of a proper written Counter Notification, we will provide the person that submitted the infringement Notification with a copy of the Counter Notification and will, within 14 business days following receipt of the Counter Notification, restore the removed material to our Website unless our Copyright Agent first receives notice that a court action has been filed to restrain you from engaging in infringement related to the allegedly infringing material.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
