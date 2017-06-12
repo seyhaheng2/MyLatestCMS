@@ -15,8 +15,14 @@ class Post < ApplicationRecord
   end
 
   has_attached_file :image, :styles => { :medium => "620x349!", :thumbnail => "385x216!", :small => "112x63!" },
-                    :url  => "/assets/images/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/assets/images/:id/:style/:basename.:extension"
+                    # :url  => "/assets/images/:id/:style/:basename.:extension",
+                    # :path => ":rails_root/public/assets/images/:id/:style/:basename.:extension",
+                    :storage => :dropbox,
+                    :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+                    :path => ":style/:id_:filename",
+                    :dropbox_visibility => 'public',
+                    :dropbox_options => { :unique_filename => true }
+
 
   validates_presence_of :image, :title, :content, :user, :subcategory, :format
   validates_attachment_presence :image

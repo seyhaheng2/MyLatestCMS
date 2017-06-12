@@ -75,3 +75,4 @@ gem 'jquery-turbolinks'
 gem 'actionpack-page_caching'
 gem 'mail_form'
 gem 'pg_search'
+gem "paperclip-dropbox"
